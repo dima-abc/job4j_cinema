@@ -1,6 +1,7 @@
 package ru.my.cinema.model;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -30,6 +31,14 @@ public class FilmSession {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "film_id", "filmId",
+            "hall_id", "hallId",
+            "start_time", "startTime",
+            "end_time", "endTime"
+    );
 
     public int getId() {
         return id;

@@ -1,5 +1,6 @@
 package ru.my.cinema.model;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -28,6 +29,13 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "full_name", "fullName",
+            "email", "email",
+            "password", "password"
+    );
 
     public int getId() {
         return id;

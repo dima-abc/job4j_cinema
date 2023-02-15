@@ -1,5 +1,6 @@
 package ru.my.cinema.model;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -30,6 +31,13 @@ public class Hall {
         this.placeCount = placeCount;
         this.description = description;
     }
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "name", "name",
+            "row_count", "rowCount",
+            "place_count", "placeCount",
+            "description", "description");
 
     public int getId() {
         return id;

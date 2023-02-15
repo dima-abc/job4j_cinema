@@ -1,5 +1,6 @@
 package ru.my.cinema.model;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -29,6 +30,14 @@ public class Ticket {
         this.place = place;
         this.userId = userId;
     }
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "session_id", "sessionId",
+            "row_number", "row",
+            "place_number", "place",
+            "user_id", "userId"
+    );
 
     public int getId() {
         return id;

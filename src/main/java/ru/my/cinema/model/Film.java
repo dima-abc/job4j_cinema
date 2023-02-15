@@ -1,5 +1,6 @@
 package ru.my.cinema.model;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -37,6 +38,17 @@ public class Film {
         this.durationInMinutes = durationInMinutes;
         this.fileId = fileId;
     }
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "name", "name",
+            "description", "description",
+            "year", "year",
+            "genre_id", "genreId",
+            "minimal_age", "minimalAge",
+            "duration_in_minutes", "durationInMinutes",
+            "file_id", "fileId"
+    );
 
     public int getId() {
         return id;

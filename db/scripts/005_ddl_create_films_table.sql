@@ -1,5 +1,5 @@
 --Создание таблицы FILM содержит список справочников фильмов.
-create table film
+create table films
 (
     id                  serial primary key,
     name                varchar,

@@ -29,7 +29,7 @@ public class SimpleFileService implements FileService {
     private final String storageDirectory;
 
     public SimpleFileService(FileRepository fileRepository,
-                             @Value("${file.derictory}") String storageDirectory) {
+                             @Value("${file.directory}") String storageDirectory) {
         this.fileRepository = fileRepository;
         this.storageDirectory = storageDirectory;
         createStorageDirectory(storageDirectory);

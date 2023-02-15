@@ -29,7 +29,7 @@ public class Sql2oGenreRepository implements GenreRepository {
     @Override
     public Optional<Genre> getGenreById(int genreId) {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM genres WHERE id =: genreId")
+            var query = connection.createQuery("SELECT * FROM genres WHERE id = :genreId")
                     .addParameter("genreId", genreId);
             var genre = query.executeAndFetchFirst(Genre.class);
             return Optional.ofNullable(genre);
