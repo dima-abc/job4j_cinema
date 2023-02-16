@@ -20,16 +20,19 @@ public class FilmSession {
     private int hallId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private int price;
 
     public FilmSession() {
     }
 
-    public FilmSession(int id, int filmId, int hallId, LocalDateTime startTime, LocalDateTime endTime) {
+    public FilmSession(int id, int filmId, int hallId,
+                       LocalDateTime startTime, LocalDateTime endTime, int price) {
         this.id = id;
         this.filmId = filmId;
         this.hallId = hallId;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.price = price;
     }
 
     public static final Map<String, String> COLUMN_MAPPING = Map.of(
@@ -37,7 +40,8 @@ public class FilmSession {
             "film_id", "filmId",
             "hall_id", "hallId",
             "start_time", "startTime",
-            "end_time", "endTime"
+            "end_time", "endTime",
+            "price", "price"
     );
 
     public int getId() {
@@ -80,6 +84,14 @@ public class FilmSession {
         this.endTime = endTime;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -100,6 +112,7 @@ public class FilmSession {
     @Override
     public String toString() {
         return "FilmSession{id=" + id + ", filmId=" + filmId + ", hallId=" + hallId
-                + ", startTime=" + startTime + ", endTime=" + endTime + '}';
+                + ", startTime=" + startTime + ", endTime=" + endTime
+                + ", price=" + price + '}';
     }
 }

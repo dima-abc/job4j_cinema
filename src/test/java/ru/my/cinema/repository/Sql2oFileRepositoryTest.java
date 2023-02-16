@@ -26,7 +26,7 @@ class Sql2oFileRepositoryTest {
 
     private static Sql2oFileRepository sql2oFileRepository;
 
-    private static File file = new File(-1, "testName", "testPath");
+    private static File file = new File(0, "testName", "testPath");
 
     private static Sql2o sql2o;
 
