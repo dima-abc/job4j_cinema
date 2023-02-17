@@ -1,6 +1,6 @@
 
+<img alt="logo.jpg" src="img/logo.jpg" title="Cinema Monitor"/>
 
-<img alt="logo.webp" src="img/logo.webp"/>
 <h1>Сервис кинотеатр</h1>
 
 <h3>Описание проекта</h3>
