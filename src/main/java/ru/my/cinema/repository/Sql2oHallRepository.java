@@ -38,7 +38,7 @@ public class Sql2oHallRepository implements HallRepository {
     @Override
     public Collection<Hall> getAllHall() {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT  * FROM halls");
+            var query = connection.createQuery("SELECT * FROM halls");
             return query.setColumnMappings(Hall.COLUMN_MAPPING).executeAndFetch(Hall.class);
         }
     }

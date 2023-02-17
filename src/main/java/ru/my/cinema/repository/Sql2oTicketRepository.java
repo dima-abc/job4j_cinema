@@ -1,5 +1,7 @@
 package ru.my.cinema.repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.my.cinema.model.Ticket;
@@ -19,6 +21,7 @@ import java.util.Optional;
  */
 @Repository
 public class Sql2oTicketRepository implements TicketRepository {
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.class.getSimpleName());
     private final Sql2o sql2o;
 
     public Sql2oTicketRepository(Sql2o sql2o) {
@@ -39,8 +42,9 @@ public class Sql2oTicketRepository implements TicketRepository {
                     .addParameter("userId", ticket.getUserId());
             int generateId = query.executeUpdate().getKey(Integer.class);
             ticket.setId(generateId);
-            return Optional.ofNullable(ticket);
+            return Optional.of(ticket);
         } catch (Exception exception) {
+            LOG.error("{} don't save, error: {}", ticket, exception.getMessage());
             return Optional.empty();
         }
     }
