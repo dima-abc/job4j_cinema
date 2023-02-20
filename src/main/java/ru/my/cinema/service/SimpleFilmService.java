@@ -31,7 +31,7 @@ public class SimpleFilmService implements FilmService {
     }
 
     @Override
-    public Optional<FilmDto> getFilmById(int id) {
+    public Optional<FilmDto> getFilmDtoById(int id) {
         var filmOptional = filmRepository.getFilmById(id);
         if (filmOptional.isEmpty()) {
             return Optional.empty();
@@ -41,12 +41,12 @@ public class SimpleFilmService implements FilmService {
     }
 
     @Override
-    public List<FilmDto> getAllFilm() {
+    public List<FilmDto> getAllFilmDto() {
         var collectionFilm = filmRepository.getAllFilm();
         if (collectionFilm.isEmpty()) {
             return Collections.emptyList();
         }
-        return collectionFilm.parallelStream().map(f -> getFilmDtoByFilm(f).get())
+        return collectionFilm.stream().map(f -> getFilmDtoByFilm(f).get())
                 .collect(Collectors.toList());
     }
 

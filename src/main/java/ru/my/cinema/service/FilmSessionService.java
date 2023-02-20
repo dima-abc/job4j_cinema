@@ -17,9 +17,11 @@ import java.util.Optional;
  * @since 17.02.2023
  */
 public interface FilmSessionService {
-    Optional<FilmSessionDto> getFilmSessionById(int filmSessionId);
+    Optional<FilmSessionDto> getFilmSessionDtoById(int filmSessionId);
 
-    Collection<FilmSessionDto> getFilmSessionByFilmId(int filmId);
+    Collection<FilmSessionDto> getFilmSessionDtoByFilmId(int filmId);
 
-    Collection<FilmSessionDto> getAllFilmSessionSortedByStarTime(LocalTime timeNow);
+    Collection<FilmSessionDto> getAllFilmSessionDtoSortedByStarTime(LocalTime timeNow);
+
+    Collection<FilmSessionDto> getAllFilmSessionDto();
 }

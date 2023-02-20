@@ -16,7 +16,7 @@ import java.util.Optional;
  * @since 17.02.2023
  */
 public interface FilmService {
-    Optional<FilmDto> getFilmById(int id);
+    Optional<FilmDto> getFilmDtoById(int id);
 
-    List<FilmDto> getAllFilm();
+    List<FilmDto> getAllFilmDto();
 }

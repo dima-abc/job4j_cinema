@@ -3,13 +3,14 @@ package ru.my.cinema.service;
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.FilmSession;
 import ru.my.cinema.model.Genre;
-import ru.my.cinema.model.Hall;
 import ru.my.cinema.model.dto.FilmSessionDto;
 import ru.my.cinema.repository.*;
 
 import java.time.LocalTime;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * 3. Мидл
@@ -38,21 +39,35 @@ public class SimpleFilmSessionService implements FilmSessionService {
     }
 
     @Override
-    public Optional<FilmSessionDto> getFilmSessionById(int filmSessionId) {
+    public Optional<FilmSessionDto> getFilmSessionDtoById(int filmSessionId) {
         return Optional.empty();
     }
 
     @Override
-    public Collection<FilmSessionDto> getFilmSessionByFilmId(int filmId) {
+    public Collection<FilmSessionDto> getFilmSessionDtoByFilmId(int filmId) {
         return null;
     }
 
     @Override
-    public Collection<FilmSessionDto> getAllFilmSessionSortedByStarTime(LocalTime timeNow) {
+    public Collection<FilmSessionDto> getAllFilmSessionDtoSortedByStarTime(LocalTime timeNow) {
 
         return null;
     }
 
+    @Override
+    public Collection<FilmSessionDto> getAllFilmSessionDto() {
+        return filmSessionRepository.getAllFilmSession()
+                .stream().map(fs -> getFilmSessionDtoByFilmSession(fs).get())
+                .sorted(Comparator.comparing(FilmSessionDto::getStartTime))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Создание FilmSessionDto из FilmSessions
+     *
+     * @param filmSession FilmSession
+     * @return FilmSessionDto
+     */
     private Optional<FilmSessionDto> getFilmSessionDtoByFilmSession(FilmSession filmSession) {
         var film = filmRepository.getFilmById(filmSession.getFilmId());
         if (film.isEmpty()) {
