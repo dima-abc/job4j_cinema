@@ -1,5 +1,11 @@
 package ru.my.cinema.service;
 
+import ru.my.cinema.model.dto.FilmSessionDto;
+
+import java.time.LocalTime;
+import java.util.Collection;
+import java.util.Optional;
+
 /**
  * 3. Мидл
  * 3.2. Web
@@ -11,4 +17,9 @@ package ru.my.cinema.service;
  * @since 17.02.2023
  */
 public interface FilmSessionService {
+    Optional<FilmSessionDto> getFilmSessionById(int filmSessionId);
+
+    Collection<FilmSessionDto> getFilmSessionByFilmId(int filmId);
+
+    Collection<FilmSessionDto> getAllFilmSessionSortedByStarTime(LocalTime timeNow);
 }

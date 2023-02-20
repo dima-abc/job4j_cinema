@@ -18,5 +18,7 @@ import java.util.Optional;
 public interface FilmSessionRepository {
     Optional<FilmSession> getFilmSessionById(int sessionId);
 
+    Collection<FilmSession> getFilmSessionByFilmId(int filmId);
+
     Collection<FilmSession> getAllFilmSession();
 }

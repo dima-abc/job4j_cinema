@@ -37,7 +37,7 @@ public class SimpleFilmService implements FilmService {
             return Optional.empty();
         }
         var filmDto = getFilmDtoByFilm(filmOptional.get());
-        return Optional.of(filmDto);
+        return filmDto;
     }
 
     @Override
@@ -46,23 +46,33 @@ public class SimpleFilmService implements FilmService {
         if (collectionFilm.isEmpty()) {
             return Collections.emptyList();
         }
-        return collectionFilm.parallelStream().map(f -> getFilmDtoByFilm(f))
+        return collectionFilm.parallelStream().map(f -> getFilmDtoByFilm(f).get())
                 .collect(Collectors.toList());
     }
 
     /**
      * Преобразование DAO модели Film в DTO модель FilmDto.
      * Если жанр фильма не найден то, поле жанр в модели DTO заполнится "".
+     *
      * @param film DAO Film
      * @return new FilmDto
      */
-    private FilmDto getFilmDtoByFilm(Film film) {
+    private Optional<FilmDto> getFilmDtoByFilm(Film film) {
         var genreOptional = genreRepository.getGenreById(film.getGenreId());
         if (genreOptional.isEmpty()) {
             genreOptional = Optional.of(new Genre(0, ""));
         }
-        return new FilmDto(film.getId(), film.getName(), film.getDescription(),
-                film.getYear(), genreOptional.get().getName(), film.getMinimalAge(),
-                film.getDurationInMinutes(), film.getFileId());
+        return Optional.of(
+                new FilmDto(
+                        film.getId(),
+                        film.getName(),
+                        film.getDescription(),
+                        film.getYear(),
+                        genreOptional.get().getName(),
+                        film.getMinimalAge(),
+                        film.getDurationInMinutes(),
+                        film.getFileId()
+                )
+        );
     }
 }
