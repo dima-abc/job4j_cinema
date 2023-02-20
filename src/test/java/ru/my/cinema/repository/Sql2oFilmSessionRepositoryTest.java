@@ -33,12 +33,12 @@ class Sql2oFilmSessionRepositoryTest {
     private static Hall hall = new Hall(0, "hall1", 3, 3, "descriptionHall");
 
     private static FilmSession filmSession1 = new FilmSession(0, 0, 0,
-            LocalDateTime.now().minusDays(1).truncatedTo(ChronoUnit.SECONDS),
-            LocalDateTime.now().plusDays(10).truncatedTo(ChronoUnit.SECONDS),
+            LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
+            LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
             1000);
     private static FilmSession filmSession2 = new FilmSession(0, 0, 0,
-            LocalDateTime.now().minusDays(10).truncatedTo(ChronoUnit.SECONDS),
-            LocalDateTime.now().plusDays(1).truncatedTo(ChronoUnit.SECONDS),
+            LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
+            LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
             2000);
     private static Sql2o sql2o;
     private static Sql2oFilmSessionRepository sql2oFilmSessionRepository;
