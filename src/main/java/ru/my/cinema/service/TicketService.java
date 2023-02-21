@@ -1,5 +1,7 @@
 package ru.my.cinema.service;
 
+import java.util.Collection;
+
 /**
  * 3. Мидл
  * 3.2. Web

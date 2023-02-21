@@ -1,5 +1,10 @@
 package ru.my.cinema.service;
 
+import ru.my.cinema.model.Hall;
+
+import java.util.Collection;
+import java.util.Optional;
+
 /**
  * 3. Мидл
  * 3.2. Web
@@ -11,4 +16,7 @@ package ru.my.cinema.service;
  * @since 17.02.2023
  */
 public interface HallService {
+    public Optional<Hall> getHallById(int hallId);
+
+    public Collection<Hall> getAllHall();
 }

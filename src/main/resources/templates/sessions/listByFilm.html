@@ -47,6 +47,8 @@
             <span th:text="${sessionFilm.filmName}"/>
         </h3>
         <p th:text="${sessionFilm.minimalAge} + '+' + ', ' + ${sessionFilm.genre}"/>
+        <img th:src="@{/files/{fileId}(fileId=${sessionFilm.fileId})}"
+             th:alt="${sessionFilm.filmName}" width="200">
         <table class="table text-center">
             <thead>
             <th scope="col">Начало</th>
@@ -58,7 +60,7 @@
                     th:text="${#temporals.format(sessionDto.startTime, 'HH:mm')}"/>
                 <td>
                     <a th:text="${sessionDto.hallName}"
-                       th:href="@{/sessions/hall/{hallId}(hallId=${sessionDto.hallId})}"/>
+                       th:href="@{/hall/{hallId}(hallId=${sessionDto.id})}"/>
                 </td>
 
             </tr>

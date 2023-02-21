@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.my.cinema.model.FilmSession;
 import ru.my.cinema.model.Genre;
 import ru.my.cinema.model.dto.SessionDto;
+import ru.my.cinema.model.dto.SessionFilmGenreHallDto;
 import ru.my.cinema.repository.*;
 
 import java.time.LocalTime;
@@ -73,6 +74,33 @@ public class SimpleFilmSessionService implements FilmSessionService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Optional<SessionFilmGenreHallDto> getSessionHallDtoBySessionId(int sessionId) {
+        var session = filmSessionRepository.getFilmSessionById(sessionId);
+        if (session.isEmpty()) {
+            return Optional.empty();
+        }
+        var film = filmRepository.getFilmById(session.get().getFilmId());
+        if (film.isEmpty()) {
+            return Optional.empty();
+        }
+        var hall = hallRepository.getHallById(session.get().getHallId());
+        if (hall.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(new SessionFilmGenreHallDto(
+                session.get().getId(),
+                session.get().getStartTime(),
+                session.get().getPrice(),
+                film.get().getName(),
+                film.get().getMinimalAge(),
+                hall.get().getId(),
+                hall.get().getName(),
+                hall.get().getRowCount(),
+                hall.get().getPlaceCount()
+        ));
+    }
+
     /**
      * Создание SessionDto из FilmSessions
      *
@@ -96,6 +124,7 @@ public class SimpleFilmSessionService implements FilmSessionService {
                 new SessionDto(
                         filmSession.getId(),
                         filmSession.getStartTime().toLocalTime(),
+                        film.get().getFileId(),
                         film.get().getName(),
                         genre.get().getName(),
                         film.get().getMinimalAge(),

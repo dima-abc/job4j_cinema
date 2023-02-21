@@ -15,6 +15,7 @@ import java.util.Objects;
 public class SessionDto {
     private int id;
     private LocalTime startTime;
+    private int fileId;
     private String filmName;
     private String genre;
     private int minimalAge;
@@ -24,11 +25,12 @@ public class SessionDto {
     public SessionDto() {
     }
 
-    public SessionDto(int id, LocalTime startTime,
+    public SessionDto(int id, LocalTime startTime, int fileId,
                       String filmName, String genre,
                       int minimalAge, int hallId, String hallName) {
         this.id = id;
         this.startTime = startTime;
+        this.fileId = fileId;
         this.filmName = filmName;
         this.genre = genre;
         this.minimalAge = minimalAge;
@@ -50,6 +52,14 @@ public class SessionDto {
 
     public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
+    }
+
+    public int getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(int fileId) {
+        this.fileId = fileId;
     }
 
     public String getFilmName() {
@@ -111,7 +121,7 @@ public class SessionDto {
 
     @Override
     public String toString() {
-        return "SessionDto{id=" + id + ", startTime='" + startTime + '\''
+        return "SessionDto{id=" + id + ", startTime='" + startTime + '\'' + ", filId='" + fileId
                + ", filmName='" + filmName + '\'' + ", genre='" + genre + '\''
                + ", minimalAge=" + minimalAge + ", hallId=" + hallId
                + ", hallName='" + hallName + '\'' + '}';
