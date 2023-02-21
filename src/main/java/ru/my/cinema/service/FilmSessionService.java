@@ -1,6 +1,6 @@
 package ru.my.cinema.service;
 
-import ru.my.cinema.model.dto.FilmSessionDto;
+import ru.my.cinema.model.dto.SessionDto;
 
 import java.time.LocalTime;
 import java.util.Collection;
@@ -17,11 +17,11 @@ import java.util.Optional;
  * @since 17.02.2023
  */
 public interface FilmSessionService {
-    Optional<FilmSessionDto> getFilmSessionDtoById(int filmSessionId);
+    Optional<SessionDto> getSessionDtoById(int filmSessionId);
 
-    Collection<FilmSessionDto> getFilmSessionDtoByFilmId(int filmId);
+    Collection<SessionDto> getSessionDtoByFilmId(int filmId);
 
-    Collection<FilmSessionDto> getAllFilmSessionDtoSortedByStarTime(LocalTime timeNow);
+    Collection<SessionDto> getAllSessionDtoSortedByStarTime(LocalTime timeNow);
 
-    Collection<FilmSessionDto> getAllFilmSessionDto();
+    Collection<SessionDto> getAllSessionDto();
 }

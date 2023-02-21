@@ -3,6 +3,7 @@ package ru.my.cinema.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.my.cinema.service.SimpleFilmSessionService;
 
@@ -27,7 +28,21 @@ public class FilmSessionController {
     @GetMapping
     public String getAllFilmSession(Model model) {
         model.addAttribute("fileLogoId", IndexController.LOGO);
-        model.addAttribute("filmSessionsDtoS", filmSessionService.getAllFilmSessionDto());
+        model.addAttribute("sessionsDto", filmSessionService.getAllSessionDto());
         return "sessions/list";
+    }
+
+    @GetMapping("/{filmId}")
+    public String getSessionByFilm(Model model, @PathVariable int filmId) {
+            model.addAttribute("fileLogoId", IndexController.LOGO);
+            var sessionDtoByFilm = filmSessionService.getSessionDtoByFilmId(filmId);
+            if (sessionDtoByFilm.isEmpty()) {
+                model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
+            return "errors/404";
+        }
+        var sessionDtoFilm = sessionDtoByFilm.stream().findFirst().get();
+        model.addAttribute("sessionFilm", sessionDtoFilm);
+        model.addAttribute("sessionsDtoByFilm", sessionDtoByFilm);
+        return "sessions/listByFilm";
     }
 }

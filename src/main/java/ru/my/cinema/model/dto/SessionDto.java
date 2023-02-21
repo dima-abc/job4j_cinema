@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author Dmitry Stepanov, user Dmitry
  * @since 20.02.2023
  */
-public class FilmSessionDto {
+public class SessionDto {
     private int id;
     private LocalTime startTime;
     private String filmName;
@@ -21,12 +21,12 @@ public class FilmSessionDto {
     private int hallId;
     private String hallName;
 
-    public FilmSessionDto() {
+    public SessionDto() {
     }
 
-    public FilmSessionDto(int id, LocalTime startTime,
-                          String filmName, String genre,
-                          int minimalAge, int hallId, String hallName) {
+    public SessionDto(int id, LocalTime startTime,
+                      String filmName, String genre,
+                      int minimalAge, int hallId, String hallName) {
         this.id = id;
         this.startTime = startTime;
         this.filmName = filmName;
@@ -100,7 +100,7 @@ public class FilmSessionDto {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        FilmSessionDto that = (FilmSessionDto) o;
+        SessionDto that = (SessionDto) o;
         return id == that.id;
     }
 
@@ -111,7 +111,7 @@ public class FilmSessionDto {
 
     @Override
     public String toString() {
-        return "FilmSessionDto{id=" + id + ", startTime='" + startTime + '\''
+        return "SessionDto{id=" + id + ", startTime='" + startTime + '\''
                + ", filmName='" + filmName + '\'' + ", genre='" + genre + '\''
                + ", minimalAge=" + minimalAge + ", hallId=" + hallId
                + ", hallName='" + hallName + '\'' + '}';

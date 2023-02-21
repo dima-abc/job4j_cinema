@@ -25,6 +25,12 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
         this.sql2o = sql2o;
     }
 
+    /**
+     * Вернуть сеанс по Id
+     *
+     * @param sessionId Int
+     * @return FilmSessions
+     */
     @Override
     public Optional<FilmSession> getFilmSessionById(int sessionId) {
         try (var connection = sql2o.open()) {
@@ -36,21 +42,32 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
         }
     }
 
+    /**
+     * Вернуть все сеансы по ID фильма, сортировка по времени сеанса.
+     *
+     * @param filmId Int.
+     * @return Collection<FilmSession>
+     */
     @Override
     public Collection<FilmSession> getFilmSessionByFilmId(int filmId) {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery(
-                            "SELECT * FROM film_sessions WHERE film_id = :filmId")
+                            "SELECT * FROM film_sessions WHERE film_id = :filmId ORDER BY start_time")
                     .addParameter("filmId", filmId);
             return query.setColumnMappings(FilmSession.COLUMN_MAPPING)
                     .executeAndFetch(FilmSession.class);
         }
     }
 
+    /**
+     * Вернуть все сеансы, сортировка по времени начала сеанса.
+     *
+     * @return Collection<FilmSession>
+     */
     @Override
     public Collection<FilmSession> getAllFilmSession() {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM film_sessions");
+            var query = connection.createQuery("SELECT * FROM film_sessions ORDER BY start_time");
             return query.setColumnMappings(FilmSession.COLUMN_MAPPING)
                     .executeAndFetch(FilmSession.class);
         }
