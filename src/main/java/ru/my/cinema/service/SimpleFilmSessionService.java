@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.my.cinema.model.FilmSession;
 import ru.my.cinema.model.Genre;
 import ru.my.cinema.model.dto.SessionDto;
-import ru.my.cinema.model.dto.SessionFilmGenreHallDto;
+import ru.my.cinema.model.dto.SessionHallDto;
 import ru.my.cinema.repository.*;
 
 import java.time.LocalTime;
@@ -75,30 +75,13 @@ public class SimpleFilmSessionService implements FilmSessionService {
     }
 
     @Override
-    public Optional<SessionFilmGenreHallDto> getSessionHallDtoBySessionId(int sessionId) {
+    public Optional<SessionHallDto> getSessionHallDtoBySessionId(int sessionId) {
         var session = filmSessionRepository.getFilmSessionById(sessionId);
         if (session.isEmpty()) {
             return Optional.empty();
         }
-        var film = filmRepository.getFilmById(session.get().getFilmId());
-        if (film.isEmpty()) {
-            return Optional.empty();
-        }
-        var hall = hallRepository.getHallById(session.get().getHallId());
-        if (hall.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(new SessionFilmGenreHallDto(
-                session.get().getId(),
-                session.get().getStartTime(),
-                session.get().getPrice(),
-                film.get().getName(),
-                film.get().getMinimalAge(),
-                hall.get().getId(),
-                hall.get().getName(),
-                hall.get().getRowCount(),
-                hall.get().getPlaceCount()
-        ));
+
+        return Optional.empty();
     }
 
     /**
@@ -132,5 +115,19 @@ public class SimpleFilmSessionService implements FilmSessionService {
                         hall.get().getName()
                 )
         );
+    }
+
+    private Optional<SessionHallDto> getSessionHallDto(FilmSession filmSession) {
+        var film = filmRepository.getFilmById(filmSession.getFilmId());
+        if (film.isEmpty()) {
+            return Optional.empty();
+        }
+        var hall = hallRepository.getHallById(filmSession.getHallId());
+        if (hall.isEmpty()) {
+            return Optional.empty();
+        }
+        var rowCount = new int[hall.get().getRowCount()];
+        var placeCount = new int[hall.get().getPlaceCount()];
+        return Optional.empty();
     }
 }

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @author Dmitry Stepanov, user Dmitry
  * @since 21.02.2023
  */
-public class SessionFilmGenreHallDto {
+public class SessionHallDto {
     private int sessionId;
     private String filmName;
     private LocalDateTime startTime;
@@ -19,19 +19,22 @@ public class SessionFilmGenreHallDto {
     private int price;
     private int hallId;
     private String hallName;
-    private int rowCount;
-    private int placeCount;
+    private int[] rowCount;
+    private int[] placeCount;
 
-    public SessionFilmGenreHallDto() {
+    public SessionHallDto() {
     }
 
-    public SessionFilmGenreHallDto(int sessionId, LocalDateTime startTime, int price, String filmName,
-                                   int minimalAge, int hallId, String hallName, int rowCount, int placeCount) {
+    public SessionHallDto(int sessionId, String filmName,
+                          LocalDateTime startTime,
+                          int minimalAge, int price,
+                          int hallId, String hallName,
+                          int[] rowCount, int[] placeCount) {
         this.sessionId = sessionId;
-        this.startTime = startTime;
-        this.price = price;
         this.filmName = filmName;
+        this.startTime = startTime;
         this.minimalAge = minimalAge;
+        this.price = price;
         this.hallId = hallId;
         this.hallName = hallName;
         this.rowCount = rowCount;
@@ -94,19 +97,19 @@ public class SessionFilmGenreHallDto {
         this.hallName = hallName;
     }
 
-    public int getRowCount() {
+    public int[] getRowCount() {
         return rowCount;
     }
 
-    public void setRowCount(int rowCount) {
+    public void setRowCount(int[] rowCount) {
         this.rowCount = rowCount;
     }
 
-    public int getPlaceCount() {
+    public int[] getPlaceCount() {
         return placeCount;
     }
 
-    public void setPlaceCount(int placeCount) {
+    public void setPlaceCount(int[] placeCount) {
         this.placeCount = placeCount;
     }
 }
