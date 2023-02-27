@@ -8,6 +8,7 @@ import java.util.Objects;
  * 3.2. Web
  * 3.2.9. Контрольные вопросы
  * 2. Сервис - Кинотеатр [#504869 #293473]
+ * SessionDto DTO (Data Transfer Object) класс модели Session.
  *
  * @author Dmitry Stepanov, user Dmitry
  * @since 20.02.2023
@@ -25,17 +26,68 @@ public class SessionDto {
     public SessionDto() {
     }
 
-    public SessionDto(int id, LocalTime startTime, int fileId,
-                      String filmName, String genre,
-                      int minimalAge, int hallId, String hallName) {
-        this.id = id;
-        this.startTime = startTime;
-        this.fileId = fileId;
-        this.filmName = filmName;
-        this.genre = genre;
-        this.minimalAge = minimalAge;
-        this.hallId = hallId;
-        this.hallName = hallName;
+    public static class Builder {
+        private int id;
+        private LocalTime startTime;
+        private int fileId;
+        private String filmName;
+        private String genre;
+        private int minimalAge;
+        private int hallId;
+        private String hallName;
+
+        public Builder buildId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder buildStartTime(LocalTime startTime) {
+            this.startTime = startTime;
+            return this;
+        }
+
+        public Builder buildFileId(int fileId) {
+            this.fileId = fileId;
+            return this;
+        }
+
+        public Builder buildFilmName(String filmName) {
+            this.filmName = filmName;
+            return this;
+        }
+
+        public Builder buildGenre(String genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder buildMinimalAge(int minimalAge) {
+            this.minimalAge = minimalAge;
+            return this;
+        }
+
+        public Builder buildHallId(int hallId) {
+            this.hallId = hallId;
+            return this;
+        }
+
+        public Builder buildHallName(String hallName) {
+            this.hallName = hallName;
+            return this;
+        }
+
+        public SessionDto build() {
+            SessionDto sessionDto = new SessionDto();
+            sessionDto.id = id;
+            sessionDto.startTime = startTime;
+            sessionDto.fileId = fileId;
+            sessionDto.filmName = filmName;
+            sessionDto.genre = genre;
+            sessionDto.minimalAge = minimalAge;
+            sessionDto.hallId = hallId;
+            sessionDto.hallName = hallName;
+            return sessionDto;
+        }
     }
 
     public int getId() {

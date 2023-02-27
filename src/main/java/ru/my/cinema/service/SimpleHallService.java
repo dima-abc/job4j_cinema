@@ -27,11 +27,11 @@ public class SimpleHallService implements HallService {
 
     @Override
     public Optional<Hall> getHallById(int hallId) {
-        return Optional.empty();
+        return hallRepository.getHallById(hallId);
     }
 
     @Override
     public Collection<Hall> getAllHall() {
-        return null;
+        return hallRepository.getAllHall();
     }
 }

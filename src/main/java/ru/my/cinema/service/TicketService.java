@@ -1,6 +1,10 @@
 package ru.my.cinema.service;
 
+import ru.my.cinema.model.Ticket;
+import ru.my.cinema.model.dto.TicketDto;
+
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * 3. Мидл
@@ -13,4 +17,13 @@ import java.util.Collection;
  * @since 17.02.2023
  */
 public interface TicketService {
+    Optional<Ticket> save(Ticket ticket);
+
+    Collection<Ticket> getTicketBySessionId(int sessionId);
+
+    Collection<Ticket> getTicketByUserId(int userId);
+
+    Collection<Ticket> getAllTicket();
+
+    Collection<TicketDto> getTicketDtoBySessionId(int sessionId);
 }

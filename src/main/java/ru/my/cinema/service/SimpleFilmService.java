@@ -63,16 +63,16 @@ public class SimpleFilmService implements FilmService {
             genreOptional = Optional.of(new Genre(0, ""));
         }
         return Optional.of(
-                new FilmDto(
-                        film.getId(),
-                        film.getName(),
-                        film.getDescription(),
-                        film.getYear(),
-                        genreOptional.get().getName(),
-                        film.getMinimalAge(),
-                        film.getDurationInMinutes(),
-                        film.getFileId()
-                )
+                new FilmDto.Builder()
+                        .buildId(film.getId())
+                        .buildName(film.getName())
+                        .buildDescription(film.getDescription())
+                        .buildGenre(genreOptional.get().getName())
+                        .buildYear(film.getYear())
+                        .buildMinimalAge(film.getMinimalAge())
+                        .buildDurationInMinutes(film.getDurationInMinutes())
+                        .buildFileId(film.getFileId())
+                        .build()
         );
     }
 }
