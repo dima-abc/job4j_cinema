@@ -75,7 +75,6 @@ class Sql2oGenreRepositoryTest {
     @Test
     void whenGetGenreByIdGenre1ThenReturnGenre1Optional() {
         var actualGenre = sql2oGenreRepository.getGenreById(genre1.getId());
-        System.err.println("****************" + actualGenre.get());
         var expectedGenre = Optional.of(genre1);
         assertThat(actualGenre).usingRecursiveComparison().isEqualTo(expectedGenre);
     }
@@ -90,7 +89,6 @@ class Sql2oGenreRepositoryTest {
     @Test
     void whenFindAllGenreThenReturnCollectionGenre1Genre2() {
         var actualCollectionGenre = sql2oGenreRepository.findAllGenre();
-        System.err.println("****************" + actualCollectionGenre.toString());
         var expectedCollectionGenre = List.of(genre1, genre2);
         assertThat(actualCollectionGenre).isEqualTo(expectedCollectionGenre);
     }
