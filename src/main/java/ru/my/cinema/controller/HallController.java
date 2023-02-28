@@ -17,7 +17,7 @@ import ru.my.cinema.service.FilmSessionService;
  * @since 28.02.2023
  */
 @Controller
-@RequestMapping("/hells")
+@RequestMapping("/halls")
 public class HallController {
     private final FilmSessionService filmSessionService;
 

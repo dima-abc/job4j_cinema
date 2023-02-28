@@ -26,8 +26,8 @@
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="/">Главная</a>
-                    <a class="nav-item nav-link" th:href="@{/templates/films}">Афиша</a>
-                    <a class="nav-item nav-link" th:href="@{/templates/sessions}">Сеансы</a>
+                    <a class="nav-item nav-link" th:href="@{/films}">Афиша</a>
+                    <a class="nav-item nav-link" th:href="@{/sessions}">Сеансы</a>
                 </div>
                 <!--
                 <div class="d-flex" th:if="${user.name == 'Гость'}">
@@ -45,28 +45,26 @@
     <div class="container">
         <div class="alert alert-primary text-center" role="alert">
             <h3 class="text-center">
-                <span class="badge rounded-pill bg-light text-dark">Название фильма</span>
+                <span class="badge rounded-pill bg-light text-dark" th:text="${ticketSessionDto.getFilmName()}">Название фильма</span>
             </h3>
             <h5 class="text-center">
-                <span class="badge rounded-pill bg-light text-dark">Дата и время начала сеанса</span>
+                <span class="badge rounded-pill bg-light text-dark" th:text="${#temporals.format(ticketSessionDto.getStartTime(), 'начало ' + 'HH:mm')}">Дата и время начала сеанса</span>
             </h5>
             <h5 class="text-center">
-                <span class="badge rounded-pill bg-light text-dark">Возраст : Название залла : Цена билета</span>
+                <span class="badge rounded-pill bg-light text-dark"
+                      th:text="${'+' + ticketSessionDto.getMinimalAge() + ', ' + ticketSessionDto.getHallName() + ', ' + ticketSessionDto.getPrice() + ' Руб.'}">
+                    Возраст : Название залла : Цена билета
+                </span>
             </h5>
         </div>
-        <div class="alert alert-light text-center" role="alert">
-            <select class="form-select-inline" aria-label="Пример выбора по умолчанию">
-                <option selected>Откройте это меню выбора</option>
-                <option value="1">Один</option>
-                <option value="2">Два</option>
-                <option value="3">Три</option>
-            </select>
-            <select class="form-select-inline" aria-label="Пример выбора по умолчанию">
-                <option selected>Откройте это меню выбора</option>
-                <option value="1">Один</option>
-                <option value="2">Два</option>
-                <option value="3">Три</option>
-            </select>
+        <div class="alert alert-light text-center" role="alert" th:each="rows:${mapTickets}">
+            <div class="row mt-3" th:text="${'ряд: ' + rows.getKey()}">
+                <div class="col-1">
+                    <div class="mb-2 text-white-inline" th:each="places:${rows.getValue()}">
+                        <span>ddd</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

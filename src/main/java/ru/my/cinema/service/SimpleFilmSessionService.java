@@ -3,13 +3,11 @@ package ru.my.cinema.service;
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.FilmSession;
 import ru.my.cinema.model.Genre;
-import ru.my.cinema.model.Hall;
 import ru.my.cinema.model.dto.TicketDto;
 import ru.my.cinema.model.dto.TicketSessionHallDto;
 import ru.my.cinema.model.dto.SessionDto;
 import ru.my.cinema.repository.*;
 
-import javax.websocket.Session;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -166,16 +164,16 @@ public class SimpleFilmSessionService implements FilmSessionService {
         if (sessionOptional.isEmpty()) {
             return Optional.empty();
         }
-        var hallOptional = hallRepository.getHallById(sessionOptional.get().getHallId());
+        var session = sessionOptional.get();
+        var hallOptional = hallRepository.getHallById(session.getHallId());
         if (hallOptional.isEmpty()) {
             return Optional.empty();
         }
-        var filmOptional = filmRepository.getFilmById(sessionId);
+        var hall = hallOptional.get();
+        var filmOptional = filmRepository.getFilmById(session.getFilmId());
         if (filmOptional.isEmpty()) {
             return Optional.empty();
         }
-        var session = sessionOptional.get();
-        var hall = hallOptional.get();
         var film = filmOptional.get();
         var ticketsBusy = ticketService.getTicketDtoBySessionId(session.getId());
         var ticketsFreeAndBusy = getTicketFreeAndBusy(
