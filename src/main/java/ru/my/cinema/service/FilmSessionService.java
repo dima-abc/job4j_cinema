@@ -26,5 +26,5 @@ public interface FilmSessionService {
 
     Collection<SessionDto> getAllSessionDto();
 
-    Optional<TicketSessionHallDto> getSessionHallDtoBySessionId(int sessionId);
+    Optional<TicketSessionHallDto> getTicketSessionHallDtoBySessionId(int sessionId);
 }

@@ -60,9 +60,8 @@
                     th:text="${#temporals.format(sessionDto.startTime, 'HH:mm')}"/>
                 <td>
                     <a th:text="${sessionDto.hallName}"
-                       th:href="@{/hall/{hallId}(hallId=${sessionDto.id})}"/>
+                       th:href="@{/halls/{sessionId}(sessionId=${sessionDto.id})}"/>
                 </td>
-
             </tr>
             </tbody>
         </table>

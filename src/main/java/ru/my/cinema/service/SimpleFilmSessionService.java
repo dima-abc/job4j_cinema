@@ -161,7 +161,7 @@ public class SimpleFilmSessionService implements FilmSessionService {
      * @return Optional TicketSessionHallDto
      */
     @Override
-    public Optional<TicketSessionHallDto> getSessionHallDtoBySessionId(int sessionId) {
+    public Optional<TicketSessionHallDto> getTicketSessionHallDtoBySessionId(int sessionId) {
         var sessionOptional = filmSessionRepository.getFilmSessionById(sessionId);
         if (sessionOptional.isEmpty()) {
             return Optional.empty();

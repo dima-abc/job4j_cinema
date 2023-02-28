@@ -54,7 +54,7 @@
                 <div class="col-5">
                     <h4>
                         <a th:text="${sessionDto.filmName}"
-                           th:href="@{/hall/{hallId}(hallId=${sessionDto.hallId})}"/>
+                           th:href="@{/halls/{sessionId}(sessionId=${sessionDto.id})}"/>
                     </h4>
                     <p th:text="${sessionDto.minimalAge} + '+' + ', ' + ${sessionDto.genre}"></p>
                     <p th:text="${sessionDto.hallName}"></p>
