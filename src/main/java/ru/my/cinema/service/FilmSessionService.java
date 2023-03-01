@@ -25,6 +25,4 @@ public interface FilmSessionService {
     Collection<SessionDto> getAllSessionDtoSortedByStarTime(LocalTime timeNow);
 
     Collection<SessionDto> getAllSessionDto();
-
-    Optional<TicketSessionHallDto> getTicketSessionHallDtoBySessionId(int sessionId);
 }

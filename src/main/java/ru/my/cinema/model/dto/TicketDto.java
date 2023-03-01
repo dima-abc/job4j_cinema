@@ -76,4 +76,10 @@ public class TicketDto {
     public int hashCode() {
         return Objects.hash(sessionId, row, place);
     }
+
+    @Override
+    public String toString() {
+        return "TicketDto{sessionId=" + sessionId + ", row=" + row
+               + ", place=" + place + ", free=" + free + '}';
+    }
 }

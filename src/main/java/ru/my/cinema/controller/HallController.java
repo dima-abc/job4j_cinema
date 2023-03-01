@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.my.cinema.service.FilmSessionService;
+import ru.my.cinema.service.HallService;
 
 /**
  * 3. Мидл
@@ -19,16 +20,16 @@ import ru.my.cinema.service.FilmSessionService;
 @Controller
 @RequestMapping("/halls")
 public class HallController {
-    private final FilmSessionService filmSessionService;
+    private final HallService hallService;
 
-    public HallController(FilmSessionService filmSessionService) {
-        this.filmSessionService = filmSessionService;
+    public HallController(HallService hallService) {
+        this.hallService = hallService;
     }
 
     @GetMapping("/{sessionId}")
     public String getHallBySession(Model model, @PathVariable int sessionId) {
         model.addAttribute("fileLogoId", IndexController.LOGO);
-        var ticketSessionDto = filmSessionService.getTicketSessionHallDtoBySessionId(sessionId);
+        var ticketSessionDto = hallService.getTicketSessionHallDtoBySessionId(sessionId);
         if (ticketSessionDto.isEmpty()) {
             model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
             return "errors/404";
