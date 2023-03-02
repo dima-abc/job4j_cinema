@@ -34,10 +34,10 @@ public class FilmSessionController {
 
     @GetMapping("/{filmId}")
     public String getSessionByFilm(Model model, @PathVariable int filmId) {
-            model.addAttribute("fileLogoId", IndexController.LOGO);
-            var sessionDtoByFilm = filmSessionService.getSessionDtoByFilmId(filmId);
-            if (sessionDtoByFilm.isEmpty()) {
-                model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
+        model.addAttribute("fileLogoId", IndexController.LOGO);
+        var sessionDtoByFilm = filmSessionService.getSessionDtoByFilmId(filmId);
+        if (sessionDtoByFilm.isEmpty()) {
+            model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
             return "errors/404";
         }
         var sessionDtoFilm = sessionDtoByFilm.stream().findFirst().get();

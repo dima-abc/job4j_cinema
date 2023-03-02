@@ -1,7 +1,7 @@
 package ru.my.cinema.service;
 
 import ru.my.cinema.model.Hall;
-import ru.my.cinema.model.dto.TicketSessionHallDto;
+import ru.my.cinema.model.dto.HallDto;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -21,5 +21,5 @@ public interface HallService {
 
     public Collection<Hall> getAllHall();
 
-    Optional<TicketSessionHallDto> getTicketSessionHallDtoBySessionId(int sessionId);
+    Optional<HallDto> getHallDtoBySessionId(int sessionId);
 }

@@ -1,7 +1,6 @@
 package ru.my.cinema.repository;
 
 import ru.my.cinema.model.Ticket;
-import ru.my.cinema.model.dto.TicketDto;
 
 import java.util.Collection;
 import java.util.Optional;

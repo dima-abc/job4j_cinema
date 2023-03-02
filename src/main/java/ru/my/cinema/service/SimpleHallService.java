@@ -2,13 +2,13 @@ package ru.my.cinema.service;
 
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.Hall;
-import ru.my.cinema.model.dto.TicketDto;
-import ru.my.cinema.model.dto.TicketSessionHallDto;
+import ru.my.cinema.model.dto.HallDto;
 import ru.my.cinema.repository.FilmRepository;
 import ru.my.cinema.repository.FilmSessionRepository;
 import ru.my.cinema.repository.HallRepository;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * 3. Мидл
@@ -23,16 +23,13 @@ import java.util.*;
 @Service
 public class SimpleHallService implements HallService {
     private final HallRepository hallRepository;
-    private final TicketService ticketService;
     private final FilmSessionRepository filmSessionRepository;
     private final FilmRepository filmRepository;
 
     public SimpleHallService(HallRepository hallRepository,
-                             TicketService ticketService,
                              FilmSessionRepository filmSessionRepository,
                              FilmRepository filmRepository) {
         this.hallRepository = hallRepository;
-        this.ticketService = ticketService;
         this.filmSessionRepository = filmSessionRepository;
         this.filmRepository = filmRepository;
     }
@@ -48,44 +45,13 @@ public class SimpleHallService implements HallService {
     }
 
     /**
-     * Создание карты всех билетов на заданный сеанс в состоянии свободные,
-     * поле free = true;
+     * Генерация массива мест по его количеству.
      *
-     * @param sessionId
-     * @param rowHall
-     * @param placeHall
-     * @return
+     * @param size int
+     * @return int Array
      */
-    private Map<Integer, Map<Integer, TicketDto>> getAllTicketBySessionId(int sessionId, int rowHall, int placeHall) {
-        Map<Integer, Map<Integer, TicketDto>> allTicket = new HashMap<>();
-        for (int i = 1; i <= rowHall; i++) {
-            allTicket.put(i, new HashMap<>());
-            for (int j = 1; j <= placeHall; j++) {
-                allTicket.get(i).put(j,
-                        new TicketDto(sessionId, i, j, true));
-            }
-        }
-        return allTicket;
-    }
-
-    /**
-     * Метод формирует карту свободных и занятых билетов.
-     * Map<rowHall, Map<placeHall, TicketDto>
-     *
-     * @param sessionId
-     * @return Map<Integer, Map < Integer, TicketDto> mapTicketFreeAndBuse
-     */
-    private Map<Integer, Map<Integer, TicketDto>> getTicketFreeAndBusy(int sessionId, int rowHall, int placeHall, Collection<TicketDto> ticketsBusy) {
-        Map<Integer, Map<Integer, TicketDto>> allTickets = getAllTicketBySessionId(sessionId, rowHall, placeHall);
-        if (allTickets.isEmpty()) {
-            return Collections.EMPTY_MAP;
-        }
-        for (TicketDto ticketDto : ticketsBusy) {
-            allTickets.get(ticketDto.getRow())
-                    .get(ticketDto.getPlace())
-                    .setFree(ticketDto.getFree());
-        }
-        return allTickets;
+    private int[] getArrayPlaces(int size) {
+        return IntStream.range(1, size + 1).toArray();
     }
 
     /**
@@ -93,10 +59,10 @@ public class SimpleHallService implements HallService {
      * При этом DTO модель содержит сформированную карты свободных и занятых мест.
      *
      * @param sessionId int
-     * @return Optional TicketSessionHallDto
+     * @return Optional HallDto
      */
     @Override
-    public Optional<TicketSessionHallDto> getTicketSessionHallDtoBySessionId(int sessionId) {
+    public Optional<HallDto> getHallDtoBySessionId(int sessionId) {
         var sessionOptional = filmSessionRepository.getFilmSessionById(sessionId);
         if (sessionOptional.isEmpty()) {
             return Optional.empty();
@@ -112,14 +78,8 @@ public class SimpleHallService implements HallService {
             return Optional.empty();
         }
         var film = filmOptional.get();
-        var ticketsBusy = ticketService.getTicketDtoBySessionId(session.getId());
-        var ticketsFreeAndBusy = getTicketFreeAndBusy(
-                session.getId(),
-                hall.getRowCount(),
-                hall.getPlaceCount(),
-                ticketsBusy);
         return Optional.of(
-                new TicketSessionHallDto.Builder()
+                new HallDto.Builder()
                         .buildSessionId(session.getId())
                         .buildStartTime(session.getStartTime())
                         .buildFilmName(film.getName())
@@ -127,7 +87,8 @@ public class SimpleHallService implements HallService {
                         .buildPrice(session.getPrice())
                         .buildHallId(hall.getId())
                         .buildHallName(hall.getName())
-                        .buildTickets(ticketsFreeAndBusy)
+                        .buildRows(getArrayPlaces(hall.getRowCount()))
+                        .buildPlaces(getArrayPlaces(hall.getPlaceCount()))
                         .build()
         );
     }

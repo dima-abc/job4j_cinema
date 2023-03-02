@@ -42,29 +42,53 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-md">
         <div class="alert alert-primary text-center" role="alert">
             <h3 class="text-center">
-                <span class="badge rounded-pill bg-light text-dark" th:text="${ticketSessionDto.getFilmName()}">Название фильма</span>
+                <span class="badge rounded-pill bg-light text-dark"
+                      th:text="${hallDto.getFilmName()}">Название фильма</span>
             </h3>
             <h5 class="text-center">
                 <span class="badge rounded-pill bg-light text-dark"
-                      th:text="${#temporals.format(ticketSessionDto.getStartTime(), 'начало ' + 'HH:mm')}">Дата и время начала сеанса</span>
+                      th:text="${#temporals.format(hallDto.getStartTime(), 'начало ' + 'HH:mm')}">Дата и время начала сеанса</span>
             </h5>
             <h5 class="text-center">
                 <span class="badge rounded-pill bg-light text-dark"
-                      th:text="${ticketSessionDto.getMinimalAge() + '+ , ' + ticketSessionDto.getHallName() + ', ' + ticketSessionDto.getPrice() + ' Руб.'}">
+                      th:text="${hallDto.getMinimalAge() + '+ , ' + hallDto.getHallName() + ', ' + hallDto.getPrice() + ' Руб.'}">
                     Возраст : Название залла : Цена билета
                 </span>
             </h5>
         </div>
-        <span th:each="key:${mapTickets.keySet()}">
-               <label for="city" th:text="'Ряд:' + ${key}"></label>
-               <select class="form-control" id="city" name="cityId">
-                   <option th:each="plc : ${mapTickets.get(key)}" th:value="${plc.key}"
-                           th:text="${plc.value.place}"></option>
-               </select>
-        </span>
+        <div class="container text-center">
+            <p class="text-danger" th:text="${message}">fff</p>
+        </div>
+        <form class="mt-3" th:action="@{/tickets/buy}" method="post">
+            <input type="hidden" name="sessionId" th:field="*{hallDto.sessionId}">
+            <div class="container-mb">
+                <div class="mb-3 row row-cols-2 justify-content-md-center">
+                    <div class="col col-lg-2">
+                        <label for="row"><b>Ряд кинозала</b></label>
+                        <select class="form-control" id="row" name="row">
+                            <option th:each="row : ${hallDto.rows}" th:value="${row}" th:text="${row}"></option>
+                        </select>
+                    </div>
+                    <div class="col col-lg-2">
+                        <label for="place"><b>Место в ряде</b></label>
+                        <select class="form-control" id="place" name="place">
+                            <option th:each="place : ${hallDto.places}" th:value="${place}" th:text="${place}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 row row-cols-2 justify-content-md-center">
+                    <div class="col col-lg-2">
+                        <a class="btn btn-light w-100" th:href="@{/films}">Отмена</a>
+                    </div>
+                    <div class="col col-lg-2">
+                        <button class="btn btn-success w-100" type="submit">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 </body>

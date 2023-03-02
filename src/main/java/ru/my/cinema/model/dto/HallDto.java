@@ -1,19 +1,18 @@
 package ru.my.cinema.model.dto;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 
 /**
  * 3. Мидл
  * 3.2. Web
  * 3.2.9. Контрольные вопросы
  * 2. Сервис - Кинотеатр [#504869 #293473]
- * TicketSessionHallDto (Data Transfer Object) класс модели Session + Hall + ticket.
+ * HallDto (Data Transfer Object) класс модели Session + Hall + ticket.
  *
  * @author Dmitry Stepanov, user Dmitry
  * @since 21.02.2023
  */
-public class TicketSessionHallDto {
+public class HallDto {
     private int sessionId;
     private LocalDateTime startTime;
     private String filmName;
@@ -21,9 +20,10 @@ public class TicketSessionHallDto {
     private int price;
     private int hallId;
     private String hallName;
-    private Map<Integer, Map<Integer, TicketDto>> tickets;
+    private int[] rows;
+    private int[] places;
 
-    public TicketSessionHallDto() {
+    public HallDto() {
     }
 
     public static class Builder {
@@ -34,7 +34,8 @@ public class TicketSessionHallDto {
         private int price;
         private int hallId;
         private String hallName;
-        private Map<Integer, Map<Integer, TicketDto>> tickets;
+        private int[] rows;
+        private int[] places;
 
         public Builder buildSessionId(int sessionId) {
             this.sessionId = sessionId;
@@ -71,13 +72,18 @@ public class TicketSessionHallDto {
             return this;
         }
 
-        public Builder buildTickets(Map<Integer, Map<Integer, TicketDto>> tickets) {
-            this.tickets = tickets;
+        public Builder buildRows(int[] rows) {
+            this.rows = rows;
             return this;
         }
 
-        public TicketSessionHallDto build() {
-            TicketSessionHallDto dto = new TicketSessionHallDto();
+        public Builder buildPlaces(int[] places) {
+            this.places = places;
+            return this;
+        }
+
+        public HallDto build() {
+            HallDto dto = new HallDto();
             dto.sessionId = sessionId;
             dto.filmName = filmName;
             dto.startTime = startTime;
@@ -85,7 +91,8 @@ public class TicketSessionHallDto {
             dto.price = price;
             dto.hallId = hallId;
             dto.hallName = hallName;
-            dto.tickets = tickets;
+            dto.rows = rows;
+            dto.places = places;
             return dto;
         }
     }
@@ -146,11 +153,19 @@ public class TicketSessionHallDto {
         this.hallName = hallName;
     }
 
-    public Map<Integer, Map<Integer, TicketDto>> getTickets() {
-        return tickets;
+    public int[] getRows() {
+        return rows;
     }
 
-    public void setTickets(Map<Integer, Map<Integer, TicketDto>> tickets) {
-        this.tickets = tickets;
+    public void setRows(int[] rows) {
+        this.rows = rows;
+    }
+
+    public int[] getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(int[] places) {
+        this.places = places;
     }
 }

@@ -3,8 +3,6 @@ package ru.my.cinema.service;
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.FilmSession;
 import ru.my.cinema.model.Genre;
-import ru.my.cinema.model.dto.TicketDto;
-import ru.my.cinema.model.dto.TicketSessionHallDto;
 import ru.my.cinema.model.dto.SessionDto;
 import ru.my.cinema.repository.*;
 

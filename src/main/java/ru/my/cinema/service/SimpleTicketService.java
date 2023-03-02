@@ -2,7 +2,6 @@ package ru.my.cinema.service;
 
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.Ticket;
-import ru.my.cinema.model.dto.TicketDto;
 import ru.my.cinema.repository.TicketRepository;
 
 import java.util.*;
@@ -24,20 +23,6 @@ public class SimpleTicketService implements TicketService {
         this.ticketRepository = ticketRepository;
     }
 
-    /**
-     * Возвращает доменную модель билета TicketDto с признаком занятого(купленного).
-     * Поле free = false;
-     *
-     * @param ticket Ticket
-     * @return TicketDto
-     */
-    private TicketDto getTicketDto(Ticket ticket) {
-        return new TicketDto(ticket.getSessionId(),
-                ticket.getRow(),
-                ticket.getRow(),
-                false);
-    }
-
     @Override
     public Optional<Ticket> save(Ticket ticket) {
         return ticketRepository.save(ticket);
@@ -56,24 +41,5 @@ public class SimpleTicketService implements TicketService {
     @Override
     public Collection<Ticket> getAllTicket() {
         return ticketRepository.getAllTicket();
-    }
-
-    /**
-     * Создает список купленных билетов по указанному сеансу.
-     *
-     * @param sessionId int Session ID
-     * @return Collection<TicketDto>
-     */
-    @Override
-    public Collection<TicketDto> getTicketDtoBySessionId(int sessionId) {
-        var ticketBySessionId = getTicketBySessionId(sessionId);
-        if (ticketBySessionId.isEmpty()) {
-            return Collections.emptyList();
-        }
-        var ticketsDto = new ArrayList<TicketDto>();
-        for (Ticket ticket : ticketBySessionId) {
-            ticketsDto.add(getTicketDto(ticket));
-        }
-        return ticketsDto;
     }
 }

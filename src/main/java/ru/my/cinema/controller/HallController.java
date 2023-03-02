@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.my.cinema.service.FilmSessionService;
 import ru.my.cinema.service.HallService;
 
 /**
@@ -29,13 +28,12 @@ public class HallController {
     @GetMapping("/{sessionId}")
     public String getHallBySession(Model model, @PathVariable int sessionId) {
         model.addAttribute("fileLogoId", IndexController.LOGO);
-        var ticketSessionDto = hallService.getTicketSessionHallDtoBySessionId(sessionId);
-        if (ticketSessionDto.isEmpty()) {
+        var hallDto = hallService.getHallDtoBySessionId(sessionId);
+        if (hallDto.isEmpty()) {
             model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
             return "errors/404";
         }
-        model.addAttribute("ticketSessionDto", ticketSessionDto.get());
-        model.addAttribute("mapTickets", ticketSessionDto.get().getTickets());
+        model.addAttribute("hallDto", hallDto.get());
         return "halls/hellSession";
     }
 }
