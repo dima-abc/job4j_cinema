@@ -33,9 +33,9 @@ public class TicketController {
         var ticketOptional = Optional.empty();
         if (ticketOptional.isEmpty()) {
             model.addAttribute("message", "Не удалось приобрести билет на заданное место. Вероятно оно уже занято.");
-            return "redirect:/halls/" + ticket.getSessionId();
+            return "errors/404";
         }
-        System.out.println("**********" + ticket);
-        return "redirect:/halls/" + ticket.getSessionId();
+        model.addAttribute("message", "Билет куплен успешно");
+        return "errors/200";
     }
 }

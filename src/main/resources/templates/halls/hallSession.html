@@ -59,9 +59,6 @@
                 </span>
             </h5>
         </div>
-        <div class="container text-center">
-            <p class="text-danger" th:text="${message}">fff</p>
-        </div>
         <form class="mt-3" th:action="@{/tickets/buy}" method="post">
             <input type="hidden" name="sessionId" th:field="*{hallDto.sessionId}">
             <div class="container-mb">

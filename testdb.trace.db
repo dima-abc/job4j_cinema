@@ -1,3 +1,242 @@
 2023-02-28 21:52:04 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
 SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42104-214]
+2023-03-03 00:09:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42104-214]
+2023-03-03 00:09:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42104-214]
+2023-03-03 00:10:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+INSERT INTO files(name, path) VALUES (?, ?) [42104-214]
+2023-03-03 00:10:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+DELETE FROM files [42104-214]
+2023-03-03 00:10:15 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILMS" not found (this database is empty); SQL statement:
+DELETE FROM films [42104-214]
+2023-03-03 00:10:15 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILMS" not found (this database is empty); SQL statement:
+DELETE FROM films [42104-214]
+2023-03-03 00:10:15 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILM_SESSIONS" not found (this database is empty); SQL statement:
+DELETE FROM film_sessions [42104-214]
+2023-03-03 00:10:15 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILM_SESSIONS" not found (this database is empty); SQL statement:
+DELETE FROM film_sessions [42104-214]
+2023-03-03 00:10:15 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GENRES" not found (this database is empty); SQL statement:
+DELETE FROM genres [42104-214]
+2023-03-03 00:10:15 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GENRES" not found (this database is empty); SQL statement:
+DELETE FROM genres [42104-214]
+2023-03-03 00:10:15 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HALLS" not found (this database is empty); SQL statement:
+DELETE FROM halls [42104-214]
+2023-03-03 00:10:15 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HALLS" not found (this database is empty); SQL statement:
+DELETE FROM halls [42104-214]
+2023-03-03 00:10:16 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TICKETS" not found (this database is empty); SQL statement:
+DELETE FROM tickets [42104-214]
+2023-03-03 00:10:16 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:16 jdbc[17]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+INSERT INTO files(name, path) VALUES (?, ?) [42104-214]
+2023-03-03 00:10:16 jdbc[17]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+DELETE FROM files [42104-214]
+2023-03-03 00:10:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+INSERT INTO files(name, path) VALUES (?, ?) [42104-214]
+2023-03-03 00:10:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+DELETE FROM files [42104-214]
+2023-03-03 00:10:47 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILMS" not found (this database is empty); SQL statement:
+DELETE FROM films [42104-214]
+2023-03-03 00:10:47 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILMS" not found (this database is empty); SQL statement:
+DELETE FROM films [42104-214]
+2023-03-03 00:10:47 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILM_SESSIONS" not found (this database is empty); SQL statement:
+DELETE FROM film_sessions [42104-214]
+2023-03-03 00:10:47 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILM_SESSIONS" not found (this database is empty); SQL statement:
+DELETE FROM film_sessions [42104-214]
+2023-03-03 00:10:47 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GENRES" not found (this database is empty); SQL statement:
+DELETE FROM genres [42104-214]
+2023-03-03 00:10:47 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GENRES" not found (this database is empty); SQL statement:
+DELETE FROM genres [42104-214]
+2023-03-03 00:10:47 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HALLS" not found (this database is empty); SQL statement:
+DELETE FROM halls [42104-214]
+2023-03-03 00:10:47 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HALLS" not found (this database is empty); SQL statement:
+DELETE FROM halls [42104-214]
+2023-03-03 00:10:47 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:47 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TICKETS" not found (this database is empty); SQL statement:
+DELETE FROM tickets [42104-214]
+2023-03-03 00:10:47 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:47 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users(full_name, email, password)
+VALUES (?, ?, ?)
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM users
+WHERE email = ? AND password = ?
+ [42104-214]
+2023-03-03 00:10:48 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+DELETE FROM users [42104-214]
+2023-03-03 00:10:48 jdbc[17]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+INSERT INTO files(name, path) VALUES (?, ?) [42104-214]
+2023-03-03 00:10:48 jdbc[17]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FILES" not found (this database is empty); SQL statement:
+DELETE FROM files [42104-214]
+2023-03-03 00:24:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42104-214]

@@ -34,6 +34,6 @@ public class HallController {
             return "errors/404";
         }
         model.addAttribute("hallDto", hallDto.get());
-        return "halls/hellSession";
+        return "halls/hallSession";
     }
 }
