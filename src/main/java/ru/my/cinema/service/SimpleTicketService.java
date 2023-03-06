@@ -2,6 +2,7 @@ package ru.my.cinema.service;
 
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.Ticket;
+import ru.my.cinema.model.dto.TicketDto;
 import ru.my.cinema.repository.TicketRepository;
 
 import java.util.*;
@@ -19,9 +20,13 @@ import java.util.*;
 @Service
 public class SimpleTicketService implements TicketService {
     private final TicketRepository ticketRepository;
+    private final FilmSessionService filmSessionService;
 
-    public SimpleTicketService(TicketRepository ticketRepository) {
+
+    public SimpleTicketService(TicketRepository ticketRepository,
+                               FilmSessionService filmSessionService) {
         this.ticketRepository = ticketRepository;
+        this.filmSessionService = filmSessionService;
     }
 
     @Override
@@ -34,9 +39,34 @@ public class SimpleTicketService implements TicketService {
         return ticketRepository.getTicketBySessionId(sessionId);
     }
 
+    /**
+     * Метод возвращает DTO модель для отображения билетов принадлежащих пользователю.
+     *
+     * @param userId ID User
+     * @return List TicketDto
+     */
     @Override
-    public Collection<Ticket> getTicketByUserId(int userId) {
-        return ticketRepository.getTicketByUserId(userId);
+    public Collection<TicketDto> getTicketByUserId(int userId) {
+        var tickets = ticketRepository.getTicketByUserId(userId);
+        if (tickets.isEmpty()) {
+            return Collections.emptyList();
+        }
+        List<TicketDto> dtos = new ArrayList<>();
+        for (Ticket ticket : tickets) {
+            var sessionDto = filmSessionService.getSessionDtoById(ticket.getSessionId());
+            if (sessionDto.isEmpty()) {
+                continue;
+            }
+            var dto = new TicketDto(
+                    ticket.getSessionId(),
+                    sessionDto.get().getFilmName(),
+                    sessionDto.get().getHallName(),
+                    ticket.getRow(),
+                    ticket.getPlace()
+            );
+            dtos.add(dto);
+        }
+        return dtos;
     }
 
     @Override

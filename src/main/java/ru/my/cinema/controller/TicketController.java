@@ -2,6 +2,7 @@ package ru.my.cinema.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,15 @@ public class TicketController {
 
     public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
+    }
+
+    @GetMapping("/myTicket")
+    public String getTicketByUser(Model model,
+                                  HttpServletRequest request) {
+        var userDto = (UserDto) request.getAttribute("user");
+        var ticketsByUser = ticketService.getTicketByUserId(userDto.getId());
+        model.addAttribute("ticketsByUser", ticketsByUser);
+        return "tickets/myTicket";
     }
 
     @PostMapping("/buy")

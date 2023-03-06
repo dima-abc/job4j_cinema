@@ -1,6 +1,7 @@
 package ru.my.cinema.service;
 
 import ru.my.cinema.model.Ticket;
+import ru.my.cinema.model.dto.TicketDto;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -20,7 +21,7 @@ public interface TicketService {
 
     Collection<Ticket> getTicketBySessionId(int sessionId);
 
-    Collection<Ticket> getTicketByUserId(int userId);
+    Collection<TicketDto> getTicketByUserId(int userId);
 
     Collection<Ticket> getAllTicket();
 }

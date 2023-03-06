@@ -72,7 +72,12 @@ public class SimpleFilmSessionService implements FilmSessionService {
 
     @Override
     public Optional<SessionDto> getSessionDtoById(int sessionId) {
-        return Optional.empty();
+        var session = filmSessionRepository.getFilmSessionById(sessionId);
+        if (session.isEmpty()) {
+            return Optional.empty();
+        }
+        var sessionDto = getDtoByFilmSession(session.get());
+        return  sessionDto;
     }
 
     @Override
