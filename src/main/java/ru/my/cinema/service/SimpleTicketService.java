@@ -11,6 +11,7 @@ import java.util.*;
  * 3.2. Web
  * 3.2.9. Контрольные вопросы
  * 2. Сервис - Кинотеатр [#504869 #293473]
+ * SimpleTicketService реализация бизнес логики для модели Ticket.
  *
  * @author Dmitry Stepanov, user Dmitry
  * @since 27.02.2023

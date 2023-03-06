@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.my.cinema.model.Ticket;
+import ru.my.cinema.model.dto.TicketDto;
+import ru.my.cinema.model.dto.UserDto;
 import ru.my.cinema.service.TicketService;
 
-import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 3. Мидл
@@ -29,13 +31,33 @@ public class TicketController {
     }
 
     @PostMapping("/buy")
-    public String createTicket(@ModelAttribute Ticket ticket, Model model) {
-        var ticketOptional = Optional.empty();
+    public String createTicket(@ModelAttribute TicketDto ticketDto, Model model, HttpServletRequest request) {
+        var session = request.getSession();
+        var user = (UserDto) session.getAttribute("user");
+        var ticketOptional = ticketService.save(
+                new Ticket(-1,
+                        ticketDto.getSessionId(),
+                        ticketDto.getRow(),
+                        ticketDto.getPlace(),
+                        user.getId()));
         if (ticketOptional.isEmpty()) {
-            model.addAttribute("message", "Не удалось приобрести билет на заданное место. Вероятно оно уже занято.");
-            return "errors/404";
+            model.addAttribute("fileLogoId", IndexController.LOGO);
+            var message = new StringBuilder("Не удалось приобрести билет. ")
+                    .append(" Сеанс: ").append(ticketDto.getFilmName())
+                    .append(", ").append(ticketDto.getHallName())
+                    .append(", Ряд: ").append(ticketDto.getRow())
+                    .append(", Место: ").append(ticketDto.getPlace())
+                    .append(". Вероятно оно уже занято.").toString();
+            model.addAttribute("message", message);
+            return "statuses/errors/404";
         }
-        model.addAttribute("message", "Билет куплен успешно");
-        return "errors/200";
+        var message = new StringBuilder("Билет куплен успешно. ")
+                .append(" Сеанс: ").append(ticketDto.getFilmName())
+                .append(", ").append(ticketDto.getHallName())
+                .append(", Ряд: ").append(ticketDto.getRow())
+                .append(", Место: ").append(ticketDto.getPlace()).toString();
+        model.addAttribute("fileLogoId", IndexController.LOGO);
+        model.addAttribute("message", message);
+        return "statuses/success/200";
     }
 }

@@ -1,5 +1,9 @@
 package ru.my.cinema.service;
 
+import ru.my.cinema.model.User;
+
+import java.util.Optional;
+
 /**
  * 3. Мидл
  * 3.2. Web
@@ -11,4 +15,6 @@ package ru.my.cinema.service;
  * @since 17.02.2023
  */
 public interface UserService {
+    Optional<User> save(User user);
+    Optional<User> findByEmailAndPassword(String email, String password);
 }

@@ -27,7 +27,6 @@ public class FilmController {
 
     @GetMapping
     public String getAllFilm(Model model) {
-        model.addAttribute("fileLogoId", IndexController.LOGO);
         model.addAttribute("allFilmDto", filmService.getAllFilmDto());
         return "films/list";
     }

@@ -27,11 +27,11 @@ public class HallController {
 
     @GetMapping("/{sessionId}")
     public String getHallBySession(Model model, @PathVariable int sessionId) {
-        model.addAttribute("fileLogoId", IndexController.LOGO);
         var hallDto = hallService.getHallDtoBySessionId(sessionId);
         if (hallDto.isEmpty()) {
+            model.addAttribute("fileLogoId", IndexController.LOGO);
             model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
-            return "errors/404";
+            return "statuses/errors/404";
         }
         model.addAttribute("hallDto", hallDto.get());
         return "halls/hallSession";

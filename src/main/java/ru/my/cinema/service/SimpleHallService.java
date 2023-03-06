@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
  * 3.2. Web
  * 3.2.9. Контрольные вопросы
  * 2. Сервис - Кинотеатр [#504869 #293473]
- * SimpleHallService
+ * SimpleHallService реализация бизнес логики для модели Hall.
  *
  * @author Dmitry Stepanov, user Dmitry
  * @since 21.02.2023

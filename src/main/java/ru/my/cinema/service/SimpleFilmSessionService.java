@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
  * 3.2. Web
  * 3.2.9. Контрольные вопросы
  * 2. Сервис - Кинотеатр [#504869 #293473]
+ * SimpleFilmSessionService реализация бизнес логики для модели FilmSession.
  *
  * @author Dmitry Stepanov, user Dmitry
  * @since 20.02.2023

@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
     public static final int LOGO = 9;
     @GetMapping({"/", "/index"})
-    public String getIndex(Model model) {
-        model.addAttribute("fileLogoId", LOGO);
+    public String getIndex() {
         return "index";
     }
 }
