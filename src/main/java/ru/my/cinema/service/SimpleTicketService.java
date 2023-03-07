@@ -34,11 +34,6 @@ public class SimpleTicketService implements TicketService {
         return ticketRepository.save(ticket);
     }
 
-    @Override
-    public Collection<Ticket> getTicketBySessionId(int sessionId) {
-        return ticketRepository.getTicketBySessionId(sessionId);
-    }
-
     /**
      * Метод возвращает DTO модель для отображения билетов принадлежащих пользователю.
      *
@@ -59,6 +54,7 @@ public class SimpleTicketService implements TicketService {
             }
             var dto = new TicketDto(
                     ticket.getSessionId(),
+                    sessionDto.get().getFileId(),
                     sessionDto.get().getFilmName(),
                     sessionDto.get().getHallName(),
                     ticket.getRow(),
@@ -67,10 +63,5 @@ public class SimpleTicketService implements TicketService {
             dtos.add(dto);
         }
         return dtos;
-    }
-
-    @Override
-    public Collection<Ticket> getAllTicket() {
-        return ticketRepository.getAllTicket();
     }
 }

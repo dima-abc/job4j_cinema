@@ -21,7 +21,7 @@ import java.util.Optional;
  */
 @Repository
 public class Sql2oTicketRepository implements TicketRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.class.getSimpleName());
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.class);
     private final Sql2o sql2o;
 
     public Sql2oTicketRepository(Sql2o sql2o) {
@@ -45,19 +45,8 @@ public class Sql2oTicketRepository implements TicketRepository {
             return Optional.of(ticket);
         } catch (Exception exception) {
             LOG.error("{} don't save, error: {}", ticket, exception.getMessage());
-            return Optional.empty();
         }
-    }
-
-    @Override
-    public Collection<Ticket> getTicketBySessionId(int sessionId) {
-        try (var connection = sql2o.open()) {
-            var query = connection
-                    .createQuery("SELECT * FROM tickets WHERE session_id = :sessionId")
-                    .addParameter("sessionId", sessionId);
-            return query.setColumnMappings(Ticket.COLUMN_MAPPING)
-                    .executeAndFetch(Ticket.class);
-        }
+        return Optional.empty();
     }
 
     @Override
@@ -66,15 +55,6 @@ public class Sql2oTicketRepository implements TicketRepository {
             var query = connection
                     .createQuery("SELECT * FROM tickets WHERE user_id = :userId")
                     .addParameter("userId", userId);
-            return query.setColumnMappings(Ticket.COLUMN_MAPPING)
-                    .executeAndFetch(Ticket.class);
-        }
-    }
-
-    @Override
-    public Collection<Ticket> getAllTicket() {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM tickets");
             return query.setColumnMappings(Ticket.COLUMN_MAPPING)
                     .executeAndFetch(Ticket.class);
         }

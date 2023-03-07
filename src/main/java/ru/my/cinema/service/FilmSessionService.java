@@ -2,7 +2,6 @@ package ru.my.cinema.service;
 
 import ru.my.cinema.model.dto.SessionDto;
 
-import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -20,8 +19,6 @@ public interface FilmSessionService {
     Optional<SessionDto> getSessionDtoById(int filmSessionId);
 
     Collection<SessionDto> getSessionDtoByFilmId(int filmId);
-
-    Collection<SessionDto> getAllSessionDtoSortedByStarTime(LocalTime timeNow);
 
     Collection<SessionDto> getAllSessionDto();
 }

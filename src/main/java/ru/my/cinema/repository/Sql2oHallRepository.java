@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.my.cinema.model.Hall;
 
-import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -32,14 +31,6 @@ public class Sql2oHallRepository implements HallRepository {
                     .addParameter("hallId", hallId);
             var hall = query.setColumnMappings(Hall.COLUMN_MAPPING).executeAndFetchFirst(Hall.class);
             return Optional.ofNullable(hall);
-        }
-    }
-
-    @Override
-    public Collection<Hall> getAllHall() {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM halls");
-            return query.setColumnMappings(Hall.COLUMN_MAPPING).executeAndFetch(Hall.class);
         }
     }
 }

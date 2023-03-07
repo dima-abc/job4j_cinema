@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 @Repository
 public class Sql2oUserRepository implements UserRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(Sql2oUserRepository.class.getSimpleName());
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oUserRepository.class);
     private final Sql2o sql2o;
 
     public Sql2oUserRepository(Sql2o sql2o) {
@@ -43,8 +43,8 @@ public class Sql2oUserRepository implements UserRepository {
             return Optional.of(user);
         } catch (Exception exception) {
             LOG.error("{} don't save, error: {}", user, exception.getMessage());
-            return Optional.empty();
         }
+        return Optional.empty();
     }
 
     @Override

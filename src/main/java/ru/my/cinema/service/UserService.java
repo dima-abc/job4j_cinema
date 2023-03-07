@@ -1,6 +1,7 @@
 package ru.my.cinema.service;
 
 import ru.my.cinema.model.User;
+import ru.my.cinema.model.dto.UserDto;
 
 import java.util.Optional;
 
@@ -15,6 +16,6 @@ import java.util.Optional;
  * @since 17.02.2023
  */
 public interface UserService {
-    Optional<User> save(User user);
-    Optional<User> findByEmailAndPassword(String email, String password);
+    Optional<UserDto> save(User user);
+    Optional<UserDto> findByEmailAndPassword(String email, String password);
 }

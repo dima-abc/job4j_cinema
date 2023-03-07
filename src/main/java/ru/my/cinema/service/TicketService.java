@@ -19,9 +19,5 @@ import java.util.Optional;
 public interface TicketService {
     Optional<Ticket> save(Ticket ticket);
 
-    Collection<Ticket> getTicketBySessionId(int sessionId);
-
     Collection<TicketDto> getTicketByUserId(int userId);
-
-    Collection<Ticket> getAllTicket();
 }

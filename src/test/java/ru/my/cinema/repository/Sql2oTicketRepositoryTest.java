@@ -177,31 +177,6 @@ class Sql2oTicketRepositoryTest {
     }
 
     @Test
-    void whenGetTicketBySessionIdThenReturnCollectionTickets() {
-        var ticket1 = new Ticket(0, filmSession.getId(), 3, 3, user.getId());
-        var ticket2 = new Ticket(0, filmSession.getId(), 2, 5, user.getId());
-        sql2oTicketRepository.save(ticket1);
-        sql2oTicketRepository.save(ticket2);
-
-        var actualTicketsBySession = sql2oTicketRepository.getTicketBySessionId(filmSession.getId());
-        var expectedTicketBySession = List.of(ticket1, ticket2);
-
-        assertThat(actualTicketsBySession).usingRecursiveComparison().isEqualTo(expectedTicketBySession);
-    }
-
-    @Test
-    void whenGetTicketBySessionIdZeroThenReturnCollectionEmpty() {
-        var ticket1 = new Ticket(0, filmSession.getId(), 3, 3, user.getId());
-        var ticket2 = new Ticket(0, filmSession.getId(), 2, 5, user.getId());
-        sql2oTicketRepository.save(ticket1);
-        sql2oTicketRepository.save(ticket2);
-
-        var actualTicketsEmpty = sql2oTicketRepository.getTicketBySessionId(0);
-
-        assertThat(actualTicketsEmpty).isEqualTo(Collections.emptyList());
-    }
-
-    @Test
     void whenGetTicketByUserIdThenReturnCollectionTickets() {
         var ticket1 = new Ticket(0, filmSession.getId(), 3, 3, user.getId());
         var ticket2 = new Ticket(0, filmSession.getId(), 2, 5, user.getId());
@@ -224,25 +199,5 @@ class Sql2oTicketRepositoryTest {
         var actualTicketsByUser = sql2oTicketRepository.getTicketByUserId(0);
 
         assertThat(actualTicketsByUser).isEqualTo(Collections.emptyList());
-    }
-
-    @Test
-    void whenGetAllTicketThenReturnCollectionTickets() {
-        var ticket1 = new Ticket(0, filmSession.getId(), 3, 3, user.getId());
-        var ticket2 = new Ticket(0, filmSession.getId(), 2, 5, user.getId());
-        sql2oTicketRepository.save(ticket1);
-        sql2oTicketRepository.save(ticket2);
-
-        var actualTickets = sql2oTicketRepository.getAllTicket();
-        var expectedTickets = List.of(ticket1, ticket2);
-
-        assertThat(actualTickets).usingRecursiveComparison().isEqualTo(expectedTickets);
-    }
-
-    @Test
-    void whenGetAllTicketThenReturnCollectionEmpty() {
-        var actualTickets = sql2oTicketRepository.getAllTicket();
-
-        assertThat(actualTickets).isEqualTo(Collections.emptyList());
     }
 }

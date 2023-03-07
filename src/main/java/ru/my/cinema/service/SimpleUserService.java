@@ -2,6 +2,7 @@ package ru.my.cinema.service;
 
 import org.springframework.stereotype.Service;
 import ru.my.cinema.model.User;
+import ru.my.cinema.model.dto.UserDto;
 import ru.my.cinema.repository.UserRepository;
 
 import java.util.Optional;
@@ -24,13 +25,27 @@ public class SimpleUserService implements UserService {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public Optional<User> save(User user) {
-        return userRepository.save(user);
+    private UserDto getUserDtoByUser(User user) {
+        return new UserDto(user.getId(),
+                user.getFullName(),
+                user.getPassword());
     }
 
     @Override
-    public Optional<User> findByEmailAndPassword(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password);
+    public Optional<UserDto> save(User user) {
+        var userOptional = userRepository.save(user);
+        if (userOptional.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(getUserDtoByUser(userOptional.get()));
+    }
+
+    @Override
+    public Optional<UserDto> findByEmailAndPassword(String email, String password) {
+        var userOptional = userRepository.findByEmailAndPassword(email, password);
+        if (userOptional.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(getUserDtoByUser(userOptional.get()));
     }
 }

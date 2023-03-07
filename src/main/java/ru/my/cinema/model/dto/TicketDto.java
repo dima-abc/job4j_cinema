@@ -12,6 +12,7 @@ package ru.my.cinema.model.dto;
  */
 public class TicketDto {
     private int sessionId;
+    private int filmId;
     private String filmName;
     private String hallName;
     private int row;
@@ -20,8 +21,14 @@ public class TicketDto {
     public TicketDto() {
     }
 
-    public TicketDto(int sessionId, String filmName, String hallName, int row, int place) {
+    public TicketDto(int sessionId,
+                     int filmId,
+                     String filmName,
+                     String hallName,
+                     int row,
+                     int place) {
         this.sessionId = sessionId;
+        this.filmId = filmId;
         this.filmName = filmName;
         this.hallName = hallName;
         this.row = row;
@@ -34,6 +41,14 @@ public class TicketDto {
 
     public void setSessionId(int sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public int getFilmId() {
+        return filmId;
+    }
+
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
     }
 
     public String getFilmName() {

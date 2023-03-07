@@ -3,6 +3,7 @@ package ru.my.cinema.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.my.cinema.service.FilmService;
 
@@ -29,5 +30,16 @@ public class FilmController {
     public String getAllFilm(Model model) {
         model.addAttribute("allFilmDto", filmService.getAllFilmDto());
         return "films/list";
+    }
+
+    @GetMapping("/{filmId}")
+    public String getFilm(Model model, @PathVariable int filmId) {
+        var filmDto = filmService.getFilmDtoById(filmId);
+        if (filmDto.isEmpty()) {
+            model.addAttribute("message", "Фильм не найден.");
+            return "statuses/errors/404";
+        }
+        model.addAttribute("filmDto", filmDto.get());
+        return "films/one";
     }
 }

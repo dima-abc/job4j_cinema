@@ -7,12 +7,10 @@ import org.sql2o.Sql2o;
 import ru.my.cinema.configuration.DatasourceConfiguration;
 import ru.my.cinema.model.Hall;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 3. Мидл
@@ -99,12 +97,5 @@ class Sql2oHallRepositoryTest {
     void whenGetHallByIdZeroThenReturnOptionalEmpty() {
         var actualHall = sql2oHallRepository.getHallById(0);
         assertThat(actualHall).isEmpty();
-    }
-
-    @Test
-    void whenGetAllHallThenReturnListHell1Hell2() {
-        var actualHalls = sql2oHallRepository.getAllHall();
-        var expectedHalls = List.of(hall1, hall2);
-        assertThat(actualHalls).usingRecursiveComparison().isEqualTo(expectedHalls);
     }
 }

@@ -18,9 +18,5 @@ import java.util.Optional;
 public interface TicketRepository {
     Optional<Ticket> save(Ticket ticket);
 
-    Collection<Ticket> getTicketBySessionId(int sessionId);
-
     Collection<Ticket> getTicketByUserId(int userId);
-
-    Collection<Ticket> getAllTicket();
 }

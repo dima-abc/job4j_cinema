@@ -2,7 +2,6 @@ package ru.my.cinema.repository;
 
 import ru.my.cinema.model.Genre;
 
-import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -17,6 +16,4 @@ import java.util.Optional;
  */
 public interface GenreRepository {
     Optional<Genre> getGenreById(int genreId);
-
-    Collection<Genre> findAllGenre();
 }

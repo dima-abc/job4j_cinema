@@ -38,12 +38,17 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(Model model, @ModelAttribute User user) {
-        var savedUser = userService.save(user);
-        if (savedUser.isEmpty()) {
+    public String registerUser(Model model,
+                               @ModelAttribute User user,
+                               HttpServletRequest request) {
+        var saveUserDtoOptional = userService.save(user);
+        var session = request.getSession();
+        if (saveUserDtoOptional.isEmpty()) {
+            model.addAttribute("user", new UserDto(0, "Гость", ""));
             model.addAttribute("message", "Пользователь с такой почтой уже существует");
             return "statuses/errors/404";
         }
+        session.setAttribute("user", saveUserDtoOptional.get());
         return "redirect:/index";
     }
 
@@ -56,18 +61,14 @@ public class UserController {
     public String loginUser(@ModelAttribute User user,
                             Model model,
                             HttpServletRequest request) {
+        var userDtoOptional = userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
         var session = request.getSession();
-        var userOptional = userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
-        if (userOptional.isEmpty()) {
-            user.setFullName("Гость");
-            session.setAttribute("user", user);
+        if (userDtoOptional.isEmpty()) {
+            model.addAttribute("user", new UserDto(0, "Гость", ""));
             model.addAttribute("error", "Почта или пароль введены неверно");
             return "users/login";
         }
-        var userDto = new UserDto(userOptional.get().getId(),
-                userOptional.get().getFullName(),
-                userOptional.get().getEmail());
-        session.setAttribute("user", userDto);
+        session.setAttribute("user", userDtoOptional.get());
         return "redirect:/index";
     }
 

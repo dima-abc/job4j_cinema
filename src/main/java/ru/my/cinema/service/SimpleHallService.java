@@ -1,7 +1,6 @@
 package ru.my.cinema.service;
 
 import org.springframework.stereotype.Service;
-import ru.my.cinema.model.Hall;
 import ru.my.cinema.model.dto.HallDto;
 import ru.my.cinema.repository.FilmRepository;
 import ru.my.cinema.repository.FilmSessionRepository;
@@ -32,16 +31,6 @@ public class SimpleHallService implements HallService {
         this.hallRepository = hallRepository;
         this.filmSessionRepository = filmSessionRepository;
         this.filmRepository = filmRepository;
-    }
-
-    @Override
-    public Optional<Hall> getHallById(int hallId) {
-        return hallRepository.getHallById(hallId);
-    }
-
-    @Override
-    public Collection<Hall> getAllHall() {
-        return hallRepository.getAllHall();
     }
 
     /**

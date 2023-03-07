@@ -6,7 +6,6 @@ import ru.my.cinema.model.Genre;
 import ru.my.cinema.model.dto.SessionDto;
 import ru.my.cinema.repository.*;
 
-import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -76,8 +75,7 @@ public class SimpleFilmSessionService implements FilmSessionService {
         if (session.isEmpty()) {
             return Optional.empty();
         }
-        var sessionDto = getDtoByFilmSession(session.get());
-        return  sessionDto;
+        return getDtoByFilmSession(session.get());
     }
 
     @Override
@@ -88,11 +86,6 @@ public class SimpleFilmSessionService implements FilmSessionService {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public Collection<SessionDto> getAllSessionDtoSortedByStarTime(LocalTime timeNow) {
-        return null;
     }
 
     /**

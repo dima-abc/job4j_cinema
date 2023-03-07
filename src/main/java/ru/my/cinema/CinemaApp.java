@@ -17,7 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class CinemaApp {
-    private static final Logger LOG = LoggerFactory.getLogger(CinemaApp.class.getSimpleName());
+    private static final Logger LOG = LoggerFactory.getLogger(CinemaApp.class);
     private static final String START_PAGE = "http://localhost:8080/index";
 
     public static void main(String[] args) {

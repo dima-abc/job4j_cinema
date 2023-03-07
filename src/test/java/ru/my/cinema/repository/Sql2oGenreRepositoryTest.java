@@ -7,7 +7,6 @@ import org.sql2o.Sql2o;
 import ru.my.cinema.configuration.DatasourceConfiguration;
 import ru.my.cinema.model.Genre;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -82,14 +81,6 @@ class Sql2oGenreRepositoryTest {
     @Test
     void whenGetGenreByIdZeroThenReturnEmpty() {
         var actualGenre = sql2oGenreRepository.getGenreById(0);
-        var expectedGenre = Optional.of(genre1);
         assertThat(actualGenre).isEmpty();
-    }
-
-    @Test
-    void whenFindAllGenreThenReturnCollectionGenre1Genre2() {
-        var actualCollectionGenre = sql2oGenreRepository.findAllGenre();
-        var expectedCollectionGenre = List.of(genre1, genre2);
-        assertThat(actualCollectionGenre).isEqualTo(expectedCollectionGenre);
     }
 }

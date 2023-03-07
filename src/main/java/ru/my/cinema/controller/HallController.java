@@ -29,7 +29,6 @@ public class HallController {
     public String getHallBySession(Model model, @PathVariable int sessionId) {
         var hallDto = hallService.getHallDtoBySessionId(sessionId);
         if (hallDto.isEmpty()) {
-            model.addAttribute("fileLogoId", IndexController.LOGO);
             model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
             return "statuses/errors/404";
         }

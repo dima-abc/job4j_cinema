@@ -2,7 +2,6 @@ package ru.my.cinema.repository;
 
 import ru.my.cinema.model.Hall;
 
-import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -17,6 +16,4 @@ import java.util.Optional;
  */
 public interface HallRepository {
     Optional<Hall> getHallById(int hallId);
-
-    Collection<Hall> getAllHall();
 }

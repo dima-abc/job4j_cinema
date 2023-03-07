@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.my.cinema.model.Genre;
 
-import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -33,14 +32,6 @@ public class Sql2oGenreRepository implements GenreRepository {
                     .addParameter("genreId", genreId);
             var genre = query.executeAndFetchFirst(Genre.class);
             return Optional.ofNullable(genre);
-        }
-    }
-
-    @Override
-    public Collection<Genre> findAllGenre() {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM genres");
-            return query.executeAndFetch(Genre.class);
         }
     }
 }
