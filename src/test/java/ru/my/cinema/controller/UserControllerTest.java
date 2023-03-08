@@ -2,6 +2,7 @@ package ru.my.cinema.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.ui.ConcurrentModel;
 import ru.my.cinema.model.User;
 import ru.my.cinema.model.dto.UserDto;
@@ -21,6 +22,7 @@ import static org.mockito.Mockito.when;
  * 3.2. Web
  * 3.2.9. Контрольные вопросы
  * 2. Сервис - Кинотеатр [#504869 #293473]
+ * UserController TEST.
  *
  * @author Dmitry Stepanov, user Dmitry
  * @since 07.03.2023
@@ -49,12 +51,15 @@ public class UserControllerTest {
     public void whenRequestPostRegisterUserThenReturnIndexPage() {
         var user = new User(1, "name", "mail", "pass");
         var userDto = new UserDto(user.getId(), user.getFullName(), user.getEmail());
-        when(userService.save(user)).thenReturn(Optional.of(userDto));
+        var userCaptor = ArgumentCaptor.forClass(User.class);
+        when(userService.save(userCaptor.capture())).thenReturn(Optional.of(userDto));
         when(httpServletRequest.getSession()).thenReturn(httpSession);
 
         var model = new ConcurrentModel();
         var view = userController.registerUser(model, user, httpServletRequest);
+        var actualUser = userCaptor.getValue();
 
+        assertThat(actualUser).usingRecursiveComparison().isEqualTo(user);
         assertThat(view).isEqualTo("redirect:/index");
     }
 

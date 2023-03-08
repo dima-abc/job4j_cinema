@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.my.cinema.service.FilmSessionService;
 import ru.my.cinema.service.SimpleFilmSessionService;
 
 /**
@@ -19,9 +20,9 @@ import ru.my.cinema.service.SimpleFilmSessionService;
 @Controller
 @RequestMapping("/sessions")
 public class FilmSessionController {
-    private final SimpleFilmSessionService filmSessionService;
+    private final FilmSessionService filmSessionService;
 
-    public FilmSessionController(SimpleFilmSessionService filmSessionService) {
+    public FilmSessionController(FilmSessionService filmSessionService) {
         this.filmSessionService = filmSessionService;
     }
 
@@ -35,7 +36,6 @@ public class FilmSessionController {
     public String getSessionByFilm(Model model, @PathVariable int filmId) {
         var sessionDtoByFilm = filmSessionService.getSessionDtoByFilmId(filmId);
         if (sessionDtoByFilm.isEmpty()) {
-            model.addAttribute("fileLogoId", IndexController.LOGO);
             model.addAttribute("message", "Сеансы с выбранным фильмом не найдены.");
             return "statuses/errors/404";
         }

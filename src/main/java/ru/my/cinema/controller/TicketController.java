@@ -41,9 +41,10 @@ public class TicketController {
     }
 
     @PostMapping("/buy")
-    public String createTicket(@ModelAttribute TicketDto ticketDto, Model model, HttpServletRequest request) {
-        var session = request.getSession();
-        var user = (UserDto) session.getAttribute("user");
+    public String createTicket(@ModelAttribute TicketDto ticketDto,
+                               Model model,
+                               HttpServletRequest request) {
+        var user = (UserDto) request.getAttribute("user");
         var ticketOptional = ticketService.save(
                 new Ticket(-1,
                         ticketDto.getSessionId(),
@@ -51,7 +52,6 @@ public class TicketController {
                         ticketDto.getPlace(),
                         user.getId()));
         if (ticketOptional.isEmpty()) {
-            model.addAttribute("fileLogoId", IndexController.LOGO);
             var message = new StringBuilder("Не удалось приобрести билет. ")
                     .append(" Сеанс: ").append(ticketDto.getFilmName())
                     .append(", ").append(ticketDto.getHallName())
@@ -66,7 +66,6 @@ public class TicketController {
                 .append(", ").append(ticketDto.getHallName())
                 .append(", Ряд: ").append(ticketDto.getRow())
                 .append(", Место: ").append(ticketDto.getPlace()).toString();
-        model.addAttribute("fileLogoId", IndexController.LOGO);
         model.addAttribute("message", message);
         return "statuses/success/200";
     }
