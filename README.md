@@ -1,3 +1,6 @@
+[![Java CI with Maven](https://github.com/Dima-Stepanov/my_cinema/actions/workflows/maven.yml/badge.svg)](https://github.com/Dima-Stepanov/my_cinema/actions/workflows/maven.yml)
+[![codecov](https://codecov.io/gh/Dima-Stepanov/my_cinema/branch/master/graph/badge.svg?token=yommck4YRp)](https://codecov.io/gh/Dima-Stepanov/my_cinema)
+
 <img alt="logo.jpg" src="img/logo.jpg" title="Cinema Monitor"/>
 
 <h1>Сервис кинотеатр</h1>
