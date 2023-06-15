@@ -101,6 +101,9 @@ Java 17, Maven 3.8, PostgreSQL 14. Любой из доступных брауз
 Рисунок 8. Страница входа <br>
 
 **********************
-<h3>Контакты</h3>
-email: <b>haoos@inbox.ru</b> <br>
-github.com: <a href=https://github.com/Dima-Stepanov><b>Dima-Stepanov<b></a>
+
+### Контакты
+
+> email: [haoos@inbox.ru](mailto:haoos@inbox.ru) <br>
+> tl: [Dima_software](https://t.me/Dima_software) <br>
+> github.com: [Dima-Stepanov](https://github.com/Dima-Stepanov)
