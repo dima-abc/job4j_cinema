@@ -1,6 +1,3 @@
-[![Java CI with Maven](https://github.com/Dima-Stepanov/my_cinema/actions/workflows/maven.yml/badge.svg)](https://github.com/Dima-Stepanov/my_cinema/actions/workflows/maven.yml)
-[![codecov](https://codecov.io/gh/Dima-Stepanov/my_cinema/branch/master/graph/badge.svg?token=yommck4YRp)](https://codecov.io/gh/Dima-Stepanov/my_cinema)
-
 <img alt="logo.jpg" src="img/logo.jpg" title="Cinema Monitor"/>
 
 <h1>Сервис кинотеатр</h1>
@@ -33,7 +30,7 @@ Java 17, Maven 3.8, PostgreSQL 14. Любой из доступных брауз
 1. Создайте базу данных my_cinema при помощи консоли PostgreSQL или терминала pgAdmin:<br>
    """CREATE DATABASE my_cinema"""
 2. Скопировать проект из репозитория по ссылке:
-   <a href=https://github.com/Dima-Stepanov/my_cinema.git><b>Проект кинотеатр</b></a>
+   [Проект кинотеатр](https://github.com/dima-abc/job4j_cinema.git)<br>
 3. Перейдите в корень проекта и при помощи Maven соберите проект командой:<br>
    """mvn install -Pproduction -Dmaven.test.skip=true"""
 4. После успешной сборки проекта перейдите в каталог собранного проекта <b>target</b> и запустите приложение
