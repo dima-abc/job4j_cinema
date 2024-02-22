@@ -105,5 +105,5 @@ Java 17, Maven 3.8, PostgreSQL 14. Любой из доступных брауз
 ### Контакты
 
 > email: [haoos@inbox.ru](mailto:haoos@inbox.ru) <br>
-> tl: [Dima_software](https://t.me/Dima_software) <br>
-> github.com: [Dima-Stepanov](https://github.com/Dima-Stepanov)
+> tl: [dima_abc](https://t.me/dima_abc) <br>
+> github.com: [dima-abc](https://github.com/dima-abc)
